@@ -36,8 +36,8 @@
         <div class="row h-100">
           <div class="col-12 my-auto">
             <div class="masthead-content text-white py-5 py-md-0">
-              <h1 class="mb-3">SePENGKI</h1>
-              <p class="mb-5">Sistem Evaluasi Pengukuran Kinjera</p>
+              <h1 class="mb-3">Sinkronisasi Kegiatan</h1>
+              <p class="mb-5">Sinkronisasi Kegiatan Untuk RKPD 2020</p>
               <p> Login Here</p>
               <form action="process_login.php" method="POST">
                   <div class="form-group">
@@ -57,25 +57,6 @@
       </div>
     </div>
 
-    <!-- <div class="social-icons">
-      <ul class="list-unstyled text-center mb-0">
-        <li class="list-unstyled-item">
-          <a href="#">
-            <i class="fab fa-twitter"></i>
-          </a>
-        </li>
-        <li class="list-unstyled-item">
-          <a href="#">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-        </li>
-        <li class="list-unstyled-item">
-          <a href="#">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </li>
-      </ul>
-    </div> -->
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

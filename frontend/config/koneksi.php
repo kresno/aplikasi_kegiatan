@@ -6,7 +6,7 @@ $servername = "localhost";
 
 $username = "root";
 $password = "";
-$dbname = "sepengki";
+$dbname = "simencrang_kegiatan";
 
 
 // Create connection

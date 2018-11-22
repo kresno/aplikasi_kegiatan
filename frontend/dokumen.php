@@ -35,41 +35,84 @@
         <!-- ============================================================== -->
         <!-- Page Content -->
         <!-- ============================================================== -->
+
+        <?php 
+            include 'config/koneksi.php';
+
+            $sql = "SELECT id as id, username as username, password as pwd FROM users";
+            $count =0;
+            if($result = mysqli_query($con, $sql)){
+                if(mysqli_num_rows($result) > 0){
+                    while($row= mysqli_fetch_array($result)){
+                        $id = $row['id'];
+                        $username = $row['username'];
+                        $pwd= $row['pwd'];
+
+                        $return_arr[] = array(
+                            "id" => $id,
+                            "username" => $username,
+                            "pwd" => $pwd
+                        );
+                    }
+                }
+            }
+        ?>
+
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
-                            <h3 class="box-title">Create Kegiatan</h3>
-                            <form action="aksi/simpan_kegiatan.php" method="POST">
-                                <div class="form-group">
-                                    <label>Program</label>
-                                    <select id="program" name="program" class="form-control">
-                                        <option> --Silahkan Pilih-- </option>
-                                        <?php 
-                                            include 'config/koneksi.php';
-                                            $sql="SELECT program.id as id, program.nama as nama FROM trx_program join program on trx_program.program_id=program.id";
-                                            if($result = mysqli_query($con, $sql)){
-                                                if(mysqli_num_rows($result) > 0){
-                                                    while($row= mysqli_fetch_array($result)){
-                                                        echo "<option value='".$row['id']."'>".$row['nama']."</option>";
-                                                    }
-                                                }
-                                            }
-                                        ?>
-                                    </select>
-                                </div>
-                            
-                                <div class="form-group">
-                                    <label for="kegiatan">Kegiatan</label>
-                                    <input type="text" class="form-control" name="kegiatan" id="kegiatan">
-                                </div>
-
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
+                            <h3 class="box-title">Data Dokumen</h3>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pull-right">
+                                        <a href="create_dokumen.php" class="btn btn-primary">Tambah Dokumen</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-top:25px;">
+                                <table class="table table-responsive" id="myTable">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>Username</th>
+                                            <th>Password</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            if(!empty($return_arr))
+                                            {
+                                                foreach($return_arr as $arr){
+                                                    echo "<tr>";
+                                                    echo "<td>".$arr["id"]."</td>";
+                                                    echo "<td>".$arr["username"]."</td>";
+                                                    echo "<td>".$arr["pwd"]."</td>";
+                                                    echo "<td>
+                                                            <a href='edit_dokumen.php?kegiatan_id=".$arr["id"]."' class='btn btn-success'>Edit</a>
+                                                            <a href='indikator.php?kegiatan_id=".$arr["id"]."&nama=".$arr["username"]."' class='btn btn-primary'>Output</a>
+                                                            <a href='hapus_kegiatan.php?kegiatan_id=".$arr["id"]."' class='btn btn-warning'>Hapus</a>
+                                                          </td>";
+                                                    echo "</tr>";
+                                                }
+                                            } 
+                                            
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
                 
             </div>
             <!-- /.container-fluid -->
@@ -79,10 +122,6 @@
         <!-- End Page Content -->
         <!-- ============================================================== -->
     </div>
-    <?php 
-        include 'config/koneksi.php';
-
-    ?>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
@@ -90,6 +129,7 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Menu Plugin JavaScript -->
@@ -111,12 +151,11 @@
     <script src="js/dashboard1.js"></script>
     <script src="../plugins/bower_components/toast-master/js/jquery.toast.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
     <script>
-        $(document).ready(function () {
-            $("#program").select2({
-                placeholder: "Please Select"
-            });
-        });
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+    } );
     </script>
 </body>
 

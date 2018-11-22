@@ -12,9 +12,9 @@ MySQL - 10.1.34-MariaDB : Database - simencrang_kegiatan
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`simencrang_kegiatan` /*!40100 DEFAULT CHARACTER SET latin1 */;
+-- CREATE DATABASE /*!32312 IF NOT EXISTS*/`simencrang_kegiatan` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
-USE `simencrang_kegiatan`;
+-- USE `simencrang_kegiatan`;
 
 /*Table structure for table `bidang_urusan` */
 

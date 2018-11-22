@@ -8,10 +8,13 @@
                         <a href="index.php" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="program.php" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Program</a>
+                        <a href="kegiatan.php" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"></i>Kegiatan</a>
                     </li>
                     <li>
-                        <a href="kegiatan.php" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"></i>Kegiatan</a>
+                        <a href="indikator_kegiatan.php" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Indikator_Kegiatan</a>
+                    </li>
+                    <li>
+                        <a href="dokumen.php" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Dokumen</a>
                     </li>
                     <li>
                         <a href="print.php" class="waves-effect"><i class="fa fa-print fa-fw" aria-hidden="true"></i>Print</a>

@@ -40,15 +40,16 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
-                            <h3 class="box-title">Create Kegiatan</h3>
-                            <form action="aksi/simpan_kegiatan.php" method="POST">
+                            <h3 class="box-title">Create Dokumen</h3>
+                            <form action="aksi/simpan_dokumen.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label>Program</label>
-                                    <select id="program" name="program" class="form-control">
+                                    <label>Kegiatan</label>
+                                    <select id="kegiatan" name="program" class="form-control">
                                         <option> --Silahkan Pilih-- </option>
                                         <?php 
                                             include 'config/koneksi.php';
-                                            $sql="SELECT program.id as id, program.nama as nama FROM trx_program join program on trx_program.program_id=program.id";
+                                            $opd_id = $_SESSION['opd_id'];
+                                            $sql="SELECT kegiatan.id as id, kegiatan.nama as nama FROM kegiatan join opd_kegiatan on kegiatan.kegiatan_id=opd_kegiatan.kegiatan_id where opd_id=$opd_id";
                                             if($result = mysqli_query($con, $sql)){
                                                 if(mysqli_num_rows($result) > 0){
                                                     while($row= mysqli_fetch_array($result)){
@@ -61,8 +62,18 @@
                                 </div>
                             
                                 <div class="form-group">
-                                    <label for="kegiatan">Kegiatan</label>
-                                    <input type="text" class="form-control" name="kegiatan" id="kegiatan">
+                                    <label for="nama-dokumen">Nama Dokumen</label>
+                                    <input type="text" class="form-control" name="nama_dokumen" id="nama_dokumen">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="keterangan">Keterangan</label>
+                                    <input type="text" class="form-control" name="keterangan" id="keterangan">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="keterangan">Pilih Dokumen</label>
+                                    <input type="file" class="form-control" name="file" id="file" accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -79,10 +90,6 @@
         <!-- End Page Content -->
         <!-- ============================================================== -->
     </div>
-    <?php 
-        include 'config/koneksi.php';
-
-    ?>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
