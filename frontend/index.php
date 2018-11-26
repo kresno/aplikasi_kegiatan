@@ -81,6 +81,18 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">Agenda Perencanaan</h4> 
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=le7ejga7vslrrs3cs5jgqct2o8%40group.calendar.google.com&amp;color=%232F6309&amp;ctz=Asia%2FJakarta" style="border-width:0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
                 <!--/.row -->
                 <!--row -->
                 <!-- /.row -->

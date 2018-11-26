@@ -19,6 +19,9 @@
                     <li>
                         <a href="cetak.php" class="waves-effect"><i class="fa fa-print fa-fw" aria-hidden="true"></i>Cetak</a>
                     </li>
+                    <li>
+                        <a href="logout.php" class="waves-effect"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
+                    </li>
                 </ul>
             </div>
         </div>
