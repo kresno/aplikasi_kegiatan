@@ -47,6 +47,8 @@
                         <div class="white-box">
                             <h3 class="box-title">Create Indikator</h3>
                             <form action="aksi/simpan_ik.php" method="POST">
+                                <input type="hidden" name="kegiatan_id" value="<?php echo $kegiatan_id;?>">
+
                                 <div class="form-group">
                                     <label>Jenis Indikator Kegiatan</label>
                                     <select id="jenis" name="jenis" class="form-control" required>
@@ -78,7 +80,7 @@
                                         ?>
                                     </select>
                                 </div>
-
+                                
                                 <div class="form-group">
                                     <label for="usulan_asb">Usulan ASB</label>
                                     <input type="text" class="form-control" name="usulan_asb" id="usulan_asb" required>
