@@ -39,19 +39,21 @@
         <?php 
             include 'config/koneksi.php';
 
-            $sql = "SELECT id as id, username as username, password as pwd FROM users";
+            $sql = "SELECT a.id as id, a.nama as dokumen, c.nama as kegiatan, a.file as file FROM dokumen a JOIN opd_kegiatan b on b.kegiatan_id=a.kegiatan_id join kegiatan c on c.id=a.kegiatan_id where b.opd_id=$_SESSION['opd_id']";
             $count =0;
             if($result = mysqli_query($con, $sql)){
                 if(mysqli_num_rows($result) > 0){
                     while($row= mysqli_fetch_array($result)){
                         $id = $row['id'];
-                        $username = $row['username'];
-                        $pwd= $row['pwd'];
+                        $dokumen = $row['dokumen'];
+                        $kegiatan= $row['kegiatan'];
+                        $file= $row['file'];
 
                         $return_arr[] = array(
                             "id" => $id,
-                            "username" => $username,
-                            "pwd" => $pwd
+                            "dokumen" => $dokumen,
+                            "kegiatan" => $kegiatan,
+                            "file" => $file
                         );
                     }
                 }
@@ -82,8 +84,9 @@
                                     <thead>
                                         <tr>
                                             <th>id</th>
-                                            <th>Username</th>
-                                            <th>Password</th>
+                                            <th>Kegiatan</th>
+                                            <th>Nama Dokumen</th>
+                                            <th>File</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -93,13 +96,13 @@
                                             {
                                                 foreach($return_arr as $arr){
                                                     echo "<tr>";
-                                                    echo "<td>".$arr["id"]."</td>";
-                                                    echo "<td>".$arr["username"]."</td>";
-                                                    echo "<td>".$arr["pwd"]."</td>";
+                                                    echo "<td>".++$count."</td>";
+                                                    echo "<td>".$arr["kegiatan"]."</td>";
+                                                    echo "<td>".$arr["dokumen"]."</td>";
+                                                    echo "<td>".$arr["file"]."</td>";
                                                     echo "<td>
-                                                            <a href='edit_dokumen.php?kegiatan_id=".$arr["id"]."' class='btn btn-success'>Edit</a>
-                                                            <a href='indikator.php?kegiatan_id=".$arr["id"]."&nama=".$arr["username"]."' class='btn btn-primary'>Output</a>
-                                                            <a href='hapus_kegiatan.php?kegiatan_id=".$arr["id"]."' class='btn btn-warning'>Hapus</a>
+                                                            <a href='edit_dokumen.php?dok_id=".$arr["id"]."' class='btn btn-success'>Edit</a>
+                                                            <a href='hapus_dokumen.php?dok_id=".$arr["id"]."' class='btn btn-warning'>Hapus</a>
                                                           </td>";
                                                     echo "</tr>";
                                                 }
@@ -115,43 +118,7 @@
                 <!-- /.row -->
                 
             </div>
-            <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by wrappixel.com </footer>
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page Content -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- Menu Plugin JavaScript -->
-    <script src="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
-    <!--slimscroll JavaScript -->
-    <script src="js/jquery.slimscroll.js"></script>
-    <!--Wave Effects -->
-    <script src="js/waves.js"></script>
-    <!--Counter js -->
-    <script src="../plugins/bower_components/waypoints/lib/jquery.waypoints.js"></script>
-    <script src="../plugins/bower_components/counterup/jquery.counterup.min.js"></script>
-    <!-- chartist chart -->
-    <script src="../plugins/bower_components/chartist-js/dist/chartist.min.js"></script>
-    <script src="../plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
-    <!-- Sparkline chart JavaScript -->
-    <script src="../plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="js/custom.min.js"></script>
-    <script src="js/dashboard1.js"></script>
-    <script src="../plugins/bower_components/toast-master/js/jquery.toast.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
+            <?php include 'config/footer.php'; ?>
     <script>
     $(document).ready( function () {
         $('#myTable').DataTable();

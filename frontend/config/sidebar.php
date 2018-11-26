@@ -16,6 +16,9 @@
                     <li>
                         <a href="dokumen.php" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Dokumen</a>
                     </li>
+                    <li>
+                        <a href="cetak.php" class="waves-effect"><i class="fa fa-print fa-fw" aria-hidden="true"></i>Cetak</a>
+                    </li>
                 </ul>
             </div>
         </div>
