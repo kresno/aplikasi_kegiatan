@@ -66,7 +66,8 @@
                                     <select id="satuan" name="satuan" class="form-control" required>
                                         <option> --Silahkan Pilih-- </option>
                                         <?php 
-                                            $sql="SELECT * FROM satuan ";
+                                            include 'config/koneksi.php';
+                                            $sql="SELECT * FROM satuan";
                                             if($result = mysqli_query($con, $sql)){
                                                 if(mysqli_num_rows($result) > 0){
                                                     while($row= mysqli_fetch_array($result)){
@@ -128,9 +129,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
     <script>
-    $(document).ready( function () {
-        $('#myTable').DataTable();
-    } );
+    $(document).ready(function(){
+        $("#satuan").select2({
+                placeholder: "Please Select"
+            });
+    });
     </script>
 </body>
 
