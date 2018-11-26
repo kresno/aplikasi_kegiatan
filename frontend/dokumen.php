@@ -83,7 +83,7 @@
                                 <table class="table table-responsive" id="myTable">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
+                                            <th>No</th>
                                             <th>Kegiatan</th>
                                             <th>Nama Dokumen</th>
                                             <th>File</th>
