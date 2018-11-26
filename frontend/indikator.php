@@ -125,7 +125,7 @@
                 
             </div>
             <!-- /.container-fluid -->
-            <?php 'config/footer.php'; ?>
+            <?php include 'config/footer.php'; ?>
 
     <script>
     $(document).ready( function () {
