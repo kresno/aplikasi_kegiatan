@@ -16,9 +16,6 @@
                     <li>
                         <a href="dokumen.php" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Dokumen</a>
                     </li>
-                    <li>
-                        <a href="print.php" class="waves-effect"><i class="fa fa-print fa-fw" aria-hidden="true"></i>Print</a>
-                    </li>
                 </ul>
             </div>
         </div>

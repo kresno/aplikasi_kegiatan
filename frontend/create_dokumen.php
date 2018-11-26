@@ -44,12 +44,14 @@
                             <form action="aksi/simpan_dokumen.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label>Kegiatan</label>
-                                    <select id="kegiatan" name="program" class="form-control">
+                                    <select id="kegiatan" name="kegiatan" class="form-control" required>
                                         <option> --Silahkan Pilih-- </option>
                                         <?php 
                                             include 'config/koneksi.php';
                                             $opd_id = $_SESSION['opd_id'];
-                                            $sql="SELECT kegiatan.id as id, kegiatan.nama as nama FROM kegiatan join opd_kegiatan on kegiatan.kegiatan_id=opd_kegiatan.kegiatan_id where opd_id=$opd_id";
+                                            $sql="SELECT a.id AS id, a.nama AS nama 
+                                            FROM kegiatan a 
+                                            JOIN opd_kegiatan b ON a.id=b.kegiatan_id WHERE b.opd_id=$opd_id";
                                             if($result = mysqli_query($con, $sql)){
                                                 if(mysqli_num_rows($result) > 0){
                                                     while($row= mysqli_fetch_array($result)){
@@ -63,17 +65,17 @@
                             
                                 <div class="form-group">
                                     <label for="nama-dokumen">Nama Dokumen</label>
-                                    <input type="text" class="form-control" name="nama_dokumen" id="nama_dokumen">
+                                    <input type="text" class="form-control" name="nama_dokumen" id="nama_dokumen" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="keterangan">Keterangan</label>
-                                    <input type="text" class="form-control" name="keterangan" id="keterangan">
+                                    <input type="text" class="form-control" name="keterangan" id="keterangan" required>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="keterangan">Pilih Dokumen</label>
-                                    <input type="file" class="form-control" name="file" id="file" accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                                    <input type="file" class="form-control" name="file" id="file" accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -38,17 +38,17 @@
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-9">
                         <div class="white-box">
                             <h3 class="box-title">Create Kegiatan</h3>
                             <form action="aksi/simpan_kegiatan.php" method="POST">
                                 <div class="form-group">
                                     <label>Program</label>
-                                    <select id="program" name="program" class="form-control">
+                                    <select id="program" name="program" class="form-control" required>
                                         <option> --Silahkan Pilih-- </option>
                                         <?php 
                                             include 'config/koneksi.php';
-                                            $sql="SELECT program.id as id, program.nama as nama FROM trx_program join program on trx_program.program_id=program.id";
+                                            $sql="SELECT program.id as id, program.nama as nama FROM program";
                                             if($result = mysqli_query($con, $sql)){
                                                 if(mysqli_num_rows($result) > 0){
                                                     while($row= mysqli_fetch_array($result)){
@@ -59,10 +59,46 @@
                                         ?>
                                     </select>
                                 </div>
-                            
+                                
+                                <div class="form-group">
+                                    <label>Indikator Sasaran</label>
+                                    <select id="indikator_sasaran" name="indikator_sasaran" class="form-control" required>
+                                        <option> --Silahkan Pilih-- </option>
+                                        <?php 
+                                            $sql="SELECT * FROM indikator_sasaran ";
+                                            if($result = mysqli_query($con, $sql)){
+                                                if(mysqli_num_rows($result) > 0){
+                                                    while($row= mysqli_fetch_array($result)){
+                                                        echo "<option value='".$row['id']."'>".$row['nama']."</option>";
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="jenis_kegiatan">Jenis Kegiatan</label>
+                                    <select id="jenis_kegiatan" name="jenis_kegiatan" class="form-control" required>
+                                        <option >-- Silahkan Pilih -- </option>
+                                        <option value="1">Fisik</option>
+                                        <option value="1">Non Fisik</option>
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="kegiatan">Kegiatan</label>
-                                    <input type="text" class="form-control" name="kegiatan" id="kegiatan">
+                                    <input type="text" class="form-control" name="kegiatan" id="kegiatan" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="keyword">Kata Kunci / Keyword</label>
+                                    <input type="text" class="form-control" name="keyword" id="keyword" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="catatan">Catatan</label>
+                                    <input type="text" class="form-control" name="catatan" id="catatan" placeholder="Catatan Untuk Kegiatan Fisik Jika diperlukan Persyaratan yang harus dilengkapi" required>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -79,10 +115,7 @@
         <!-- End Page Content -->
         <!-- ============================================================== -->
     </div>
-    <?php 
-        include 'config/koneksi.php';
 
-    ?>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
@@ -114,6 +147,9 @@
     <script>
         $(document).ready(function () {
             $("#program").select2({
+                placeholder: "Please Select"
+            });
+            $("#indikator_sasaran").select2({
                 placeholder: "Please Select"
             });
         });
