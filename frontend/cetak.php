@@ -84,13 +84,6 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="pull-right">
-                                        <a href="create_kegiatan.php" class="btn btn-primary">Tambah Kegiatan</a>
-                                    </div>
-                                </div>
-                            </div>
                             <div style="margin-top:25px;">
                                 <table class="table table-responsive" id="myTable">
                                     <thead>
@@ -134,12 +127,13 @@
 
     <script>
     $(document).ready( function () {
-        $('#myTable').DataTable();
-        dom: 'Bfrtip',
-        buttons: [
-            'print'
-        ]
-    } );
+        $('#myTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'print'
+            ]
+        });
+    });
     </script>
 </body>
 
