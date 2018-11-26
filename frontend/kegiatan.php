@@ -46,7 +46,7 @@
                     while($row= mysqli_fetch_array($result)){
                         $id = $row['id'];
                         $kegiatan = $row['kegiatan'];
-                        $prorgram = $row['program'];
+                        $program = $row['program'];
                         $return_arr[] = array(
                             "id" => $id,
                             "kegiatan" => $kegiatan,
