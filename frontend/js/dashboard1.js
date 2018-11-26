@@ -2,8 +2,8 @@
      "use strict";
      // toat popup js
      $.toast({
-         heading: 'Welcome to Sepengki',
-         text: 'Sistem Mempermudah untuk Evaluasi Renja PD',
+         heading: 'Simencrang',
+         text: 'Sistem Informasi Dokumen Perencanaan Pembangunan',
          position: 'top-right',
          loaderBg: '#fff',
          icon: 'warning',

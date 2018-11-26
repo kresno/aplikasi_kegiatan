@@ -10,9 +10,9 @@
                     <li>
                         <a href="kegiatan.php" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"></i>Kegiatan</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="indikator_kegiatan.php" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Indikator_Kegiatan</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="dokumen.php" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Dokumen</a>
                     </li>
