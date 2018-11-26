@@ -4,9 +4,9 @@ $servername = "localhost";
 // $password = "085310526076atisser221292";
 // $dbname = "ruangaci_pj";
 
-$username = "root";
-$password = "";
-$dbname = "sepengki";
+$username = "simencrang2018_kegiatan";
+$password = "pass8080word";
+$dbname = "simencrang2018_kegiatan";
 
 
 // Create connection
