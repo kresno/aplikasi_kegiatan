@@ -52,15 +52,24 @@
                                 <div class="form-group">
                                     <label>Jenis Indikator Kegiatan</label>
                                     <select id="jenis" name="jenis" class="form-control" required>
-                                        <option> --Silahkan Pilih-- </option>
-                                        <option value="2">Keluaran</option>
-                                        <option value="3">Hasil</option>
+                                    <option> --Silahkan Pilih-- </option>
+                                        <?php 
+                                            include 'config/koneksi.php';
+                                            $sql="SELECT * FROM indikator_hasil";
+                                            if($result = mysqli_query($con, $sql)){
+                                                if(mysqli_num_rows($result) > 0){
+                                                    while($row= mysqli_fetch_array($result)){
+                                                        echo "<option value='".$row['id']."'>".$row['nama']."</option>";
+                                                    }
+                                                }
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="tolak_ukur">Tolak Ukur</label>
-                                    <input type="text" class="form-control" name="tolak_ukur" id="tolak_kegiatan" required>
+                                    <input type="text" class="form-control" name="tolak_ukur" id="tolak_ukur" required>
                                 </div>
 
                                 <div class="form-group">
@@ -68,7 +77,6 @@
                                     <select id="satuan" name="satuan" class="form-control" required>
                                         <option> --Silahkan Pilih-- </option>
                                         <?php 
-                                            include 'config/koneksi.php';
                                             $sql="SELECT * FROM satuan";
                                             if($result = mysqli_query($con, $sql)){
                                                 if(mysqli_num_rows($result) > 0){
