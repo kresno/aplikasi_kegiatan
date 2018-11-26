@@ -17,7 +17,6 @@ $ekstensi_file = strtolower(end($x));
 $new_nama = md5(round(microtime(true)).$x).'.' .end($x);;
 
 $file = '../frontend/upload/'.$new_nama;
-echo $new_nama.' '.$ukuran;
 
 if(in_array($ekstensi_file, $ekstensi) == TRUE){
     if($ukuran<2044070){
