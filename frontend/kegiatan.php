@@ -97,7 +97,7 @@
                                                     echo "<td>".$arr["kegiatan"]."</td>";
                                                     echo "<td>
                                                             <a href='edit_kegiatan.php?kegiatan_id=".$arr["id"]."' class='btn btn-success'>Edit</a>
-                                                            <a href='indikator.php?kegiatan_id=".$arr["id"]."&nama=".$arr["username"]."' class='btn btn-primary'>Output</a>
+                                                            <a href='indikator.php?kegiatan_id=".$arr["id"]."&nama=".$arr["username"]."' class='btn btn-primary'>Indikator</a>
                                                             <a href='hapus_kegiatan.php?kegiatan_id=".$arr["id"]."' class='btn btn-warning'>Hapus</a>
                                                           </td>";
                                                     echo "</tr>";

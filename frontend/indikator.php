@@ -21,33 +21,9 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <nav class="navbar navbar-default navbar-static-top m-b-0">
-            <div class="navbar-header">
-                <div class="top-left-part">
-                    <!-- Logo -->
-                    <a class="logo" href="#">
-                        <!-- Logo icon image, you can use font-icon also --><b>
-                        <!--This is dark logo icon--><img src="../plugins/images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="../plugins/images/admin-logo-dark.png" alt="home" class="light-logo" />
-                     </b>
-                        <!-- Logo text image you can use text also --><span class="hidden-xs">
-                        <!--This is dark logo text--><img src="../plugins/images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="../plugins/images/admin-text-dark.png" alt="home" class="light-logo" />
-                     </span> </a>
-                </div>
-                <!-- /Logo -->
-                <ul class="nav navbar-top-links navbar-right pull-right">
-                    <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
-                    </li>
-                    <li>
-                        <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b></a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-header -->
-            <!-- /.navbar-top-links -->
-            <!-- /.navbar-static-side -->
-        </nav>
+        <?php 
+            include 'config/navbar.php'
+        ?>
         <!-- End Top Navigation -->
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
@@ -65,7 +41,7 @@
             include 'config/koneksi.php';
             $kegiatan_id = $_GET['kegiatan_id'];
             $kegiatan_nama = $_GET['nama'];
-            $sql = "SELECT * FROM indikator_kegiatan where kegiatan_id=$kegiatan_id";
+            $sql = "SELECT a.id, a.tolak_ukur as tolak_ukur, b.nama as satuan, c.nama as jenis, a.asb as asb FROM indikator_kegiatan a join satuan b on a.satuan_id=b.id join indikator_hasil c on c.id=a.indikator_hasil_id where a.kegiatan_id=$kegiatan_id";
             
             $count =0;
             if($result = mysqli_query($con, $sql)){
@@ -74,39 +50,15 @@
                         $id = $row['id'];
                         $tolak_ukur = $row['tolak_ukur'];
                         $satuan = $row['satuan'];
-                        $ksatu = $row['ksatu'];
-                        $rsatu = $row['rsatu'];
-                        $kdua = $row['kdua'];
-                        $rdua = $row['rdua'];
-                        $ktiga = $row['ktiga'];
-                        $rtiga = $row['rtiga'];
-                        $kempat = $row['kempat'];
-                        $rempat = $row['rempat'];
-                        $klima = $row['klima'];
-                        $rlima = $row['rlima'];
-                        $kenam = $row['kenam'];
-                        $renam = $row['renam'];
-                        $ktujuh = $row['ktujuh'];
-                        $rtujuh = $row['rtujuh'];
+                        $jenis = $row['jenis'];
+                        $usulan_asb = $row['asb'];
 
                         $return_arr[] = array(
                             "id" => $id,
                             "tolak_ukur" => $tolak_ukur,
                             "satuan" => $satuan,
-                            "ksatu" => $ksatu,
-                            "rsatu" => $rsatu,
-                            "kdua" => $kdua,
-                            "rdua" => $rdua,
-                            "ktiga" => $ktiga,
-                            "rtiga" => $rtiga,
-                            "kempat" => $kempat,
-                            "rempat" => $rempat,
-                            "klima" => $klima,
-                            "rlima" => $rlima,
-                            "kenam" => $kenam,
-                            "renam" => $renam,
-                            "ktujuh" => $ktujuh,
-                            "rtujuh" => $rtujuh
+                            "jenis" => $jenis,
+                            "usulan_asb" => $usulan_asb
                         );
                     }
                 }
@@ -117,7 +69,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
-                            <h3 class="box-title">Data Indikator Kegiatan: <?php echo $kegiatan_nama; ?></h3>
+                            <h3 class="box-title">Data Indikator <?php echo $kegiatan_nama;?></h3>
                         </div>
                     </div>
                 </div>
@@ -127,43 +79,20 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="pull-right">
-                                        <a href="create_indikator.php?kegiatan_id=<?php echo $kegiatan_id; ?>" class="btn btn-primary">Tambah Indikator</a>
+                                        <a href="create_indikator.php<?php echo $kegiatan_id; ?>" class="btn btn-primary">Tambah Indikator Kegiatan</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-responsive">
-                                <table class="table">
+                            <div style="margin-top:25px;">
+                                <table class="table table-responsive" id="myTable">
                                     <thead>
-                                    <tr style="height: 22px;">
-                                        <td style="height: 66px; width: 237px;" rowspan="3" align="center">Indikator Kinerja Program (Outcome)/Kegiatan (Output)</td>
-                                        <td style="height: 44px; width: 44px;" colspan="3" rowspan="2" align="center">Target RPJMD pada Tahun 2016 s/d 2021 (Periode RPJMD)</td>
-                                        <td style="height: 44px; width: 30px;" colspan="2" rowspan="2" align="center">Realisasi Capaian Kinerja RPJMD s/d RKPD Tahun Lalu (n-2) </td>
-                                        <td style="height: 44px; width: 30px;" colspan="2" rowspan="2" align="center">Target Kinerja dan Anggaran RKPD Tahun berjalan (tahun n-1) yang dievaluasi</td>
-                                        <td style="height: 22px; width: 120px;" colspan="8" align="center">Realisasi Kinerja Pada Triwulan</td>
-                                    </tr>
-                                    <tr style="height: 22px;">
-                                        <td style="height: 22px; width: 30px;" colspan="2" align="center">I</td>
-                                        <td style="height: 22px; width: 30px;" colspan="2" align="center">II</td>
-                                        <td style="height: 22px; width: 30px;" colspan="2" align="center">III</td>
-                                        <td style="height: 22px; width: 30px;" colspan="2" align="center">IV</td>
-                                    </tr>
-                                    <tr style="height: 22px;">
-                                        <td style="height: 22px; width: 30px;" align="center">K</td>
-                                        <td style="height: 22px; width: 30px;" align="center">Satuan</td>
-                                        <td style="height: 22px; width: 14px;" align="center">Rp. (000)</td>
-                                        <td style="height: 22px; width: 15px;" align="center">K</td>
-                                        <td style="height: 22px; width: 15px;" align="center">Rp. (000)</td>
-                                        <td style="height: 22px; width: 15px;" align="center">K</td>
-                                        <td style="height: 22px; width: 15px;" align="center">Rp. (000)</td>
-                                        <td style="height: 22px; width: 15px;" align="center">K</td>
-                                        <td style="height: 22px; width: 15px;" align="center">Rp. (000)</td>
-                                        <td style="height: 22px; width: 15px;" align="center">K</td>
-                                        <td style="height: 22px; width: 15px;" align="center">Rp. (000)</td>
-                                        <td style="height: 22px; width: 15px;" align="center">K</td>
-                                        <td style="height: 22px; width: 15px;" align="center">Rp. (000)</td>
-                                        <td style="height: 22px; width: 15px;" align="center">K</td>
-                                        <td style="height: 22px; width: 15px;" align="center">Rp. (000)</td>
-                                    </tr>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Tolak Ukur</th>
+                                            <th>Satuan</th>
+                                            <th>Usulan ASB</th>
+                                            <th>Aksi</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         <?php
@@ -171,22 +100,14 @@
                                             {
                                                 foreach($return_arr as $arr){
                                                     echo "<tr>";
-                                                    echo "<td align='left'>".$arr["tolak_ukur"]."</td>";
-                                                    echo "<td align='right'>".$arr["ksatu"]."</td>";
-                                                    echo "<td align='left'>".$arr["satuan"]."</td>";
-                                                    echo "<td align='right'>".number_format($arr["rsatu"]/1000)."</td>";
-                                                    echo "<td align='right'>".$arr["kdua"]."</td>";
-                                                    echo "<td align='right'>".number_format($arr["rdua"]/1000)."</td>";
-                                                    echo "<td align='right'>".$arr["ktiga"]."</td>";
-                                                    echo "<td align='right'>".number_format($arr["rtiga"]/1000)."</td>";
-                                                    echo "<td align='right'>".$arr["kempat"]."</td>";
-                                                    echo "<td align='right'>".number_format($arr["rempat"]/1000)."</td>";
-                                                    echo "<td align='right'>".$arr["klima"]."</td>";
-                                                    echo "<td align='right'>".number_format($arr["rlima"]/1000)."</td>";
-                                                    echo "<td align='right'>".$arr["kenam"]."</td>";
-                                                    echo "<td align='right'>".number_format($arr["renam"]/1000)."</td>";
-                                                    echo "<td align='right'>".$arr["ktujuh"]."</td>";
-                                                    echo "<td align='right'>".number_format($arr["rtujuh"]/1000)."</td>";
+                                                    echo "<td>".++$count."</td>";
+                                                    echo "<td>".$arr["tolak_ukur"]."</td>";
+                                                    echo "<td>".$arr["satuan"]."</td>";
+                                                    echo "<td>".$arr["usulan_asb"]."</td>";
+                                                    echo "<td>
+                                                            <a href='edit_ik.php?ik_id=".$arr["id"]."' class='btn btn-success'>Edit</a>
+                                                            <a href='hapus_ik.php?ik_id=".$arr["id"]."' class='btn btn-warning'>Hapus</a>
+                                                          </td>";
                                                     echo "</tr>";
                                                 }
                                             } 
@@ -198,6 +119,8 @@
                         </div>
                     </div>
                 </div>
+                <!-- /.row -->
+                
             </div>
             <!-- /.container-fluid -->
             <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by wrappixel.com </footer>
@@ -206,10 +129,7 @@
         <!-- End Page Content -->
         <!-- ============================================================== -->
     </div>
-    <?php 
-        include 'config/koneksi.php';
 
-    ?>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->

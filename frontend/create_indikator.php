@@ -37,82 +37,57 @@
         <!-- ============================================================== -->
 
         <?php 
-            include 'config/koneksi.php';
-
-            $sql = "SELECT id as id, username as username, password as pwd FROM users";
-            $count =0;
-            if($result = mysqli_query($con, $sql)){
-                if(mysqli_num_rows($result) > 0){
-                    while($row= mysqli_fetch_array($result)){
-                        $id = $row['id'];
-                        $username = $row['username'];
-                        $pwd= $row['pwd'];
-
-                        $return_arr[] = array(
-                            "id" => $id,
-                            "username" => $username,
-                            "pwd" => $pwd
-                        );
-                    }
-                }
-            }
+            $kegiatan_id = $_GET['kegiatan_id'];
         ?>
 
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-9">
                         <div class="white-box">
-                            <h3 class="box-title">Data Kegiatan</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="white-box">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="pull-right">
-                                        <a href="create_kegiatan.php" class="btn btn-primary">Tambah Kegiatan</a>
-                                    </div>
+                            <h3 class="box-title">Create Indikator</h3>
+                            <form action="aksi/simpan_ik.php" method="POST">
+                                <div class="form-group">
+                                    <label>Jenis Indikator Kegiatan</label>
+                                    <select id="jenis" name="jenis" class="form-control" required>
+                                        <option> --Silahkan Pilih-- </option>
+                                        <option value="2">Keluaran</option>
+                                        <option value="3">Hasil</option>
+                                    </select>
                                 </div>
-                            </div>
-                            <div style="margin-top:25px;">
-                                <table class="table table-responsive" id="myTable">
-                                    <thead>
-                                        <tr>
-                                            <th>id</th>
-                                            <th>Username</th>
-                                            <th>Password</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                            if(!empty($return_arr))
-                                            {
-                                                foreach($return_arr as $arr){
-                                                    echo "<tr>";
-                                                    echo "<td>".$arr["id"]."</td>";
-                                                    echo "<td>".$arr["username"]."</td>";
-                                                    echo "<td>".$arr["pwd"]."</td>";
-                                                    echo "<td>
-                                                            <a href='edit_kegiatan.php?kegiatan_id=".$arr["id"]."' class='btn btn-success'>Edit</a>
-                                                            <a href='indikator.php?kegiatan_id=".$arr["id"]."&nama=".$arr["username"]."' class='btn btn-primary'>Output</a>
-                                                            <a href='hapus_kegiatan.php?kegiatan_id=".$arr["id"]."' class='btn btn-warning'>Hapus</a>
-                                                          </td>";
-                                                    echo "</tr>";
+                                
+                                <div class="form-group">
+                                    <label for="tolak_ukur">Tolak Ukur</label>
+                                    <input type="text" class="form-control" name="tolak_ukur" id="tolak_kegiatan" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Satuan</label>
+                                    <select id="satuan" name="satuan" class="form-control" required>
+                                        <option> --Silahkan Pilih-- </option>
+                                        <?php 
+                                            $sql="SELECT * FROM satuan ";
+                                            if($result = mysqli_query($con, $sql)){
+                                                if(mysqli_num_rows($result) > 0){
+                                                    while($row= mysqli_fetch_array($result)){
+                                                        echo "<option value='".$row['id']."'>".$row['nama']."</option>";
+                                                    }
                                                 }
-                                            } 
-                                            
+                                            }
                                         ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="usulan_asb">Usulan ASB</label>
+                                    <input type="text" class="form-control" name="usulan_asb" id="usulan_asb" required>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
                 
             </div>
             <!-- /.container-fluid -->
