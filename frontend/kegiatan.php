@@ -38,20 +38,19 @@
 
         <?php 
             include 'config/koneksi.php';
-
-            $sql = "SELECT id as id, username as username, password as pwd FROM users";
+            $opd_id = $_SESSION['opd_id'];
+            $sql = "SELECT a.id as id, a.nama as kegiatan, c.nama as program  FROM kegiatan a join opd_kegiatan b on a.id=b.kegiatan_id join program c on c.id=a.program_id where b.opd_id=$opd_id";
             $count =0;
             if($result = mysqli_query($con, $sql)){
                 if(mysqli_num_rows($result) > 0){
                     while($row= mysqli_fetch_array($result)){
                         $id = $row['id'];
-                        $username = $row['username'];
-                        $pwd= $row['pwd'];
-
+                        $kegiatan = $row['kegiatan'];
+                        $prorgram = $row['program'];
                         $return_arr[] = array(
                             "id" => $id,
-                            "username" => $username,
-                            "pwd" => $pwd
+                            "kegiatan" => $kegiatan,
+                            "program" => $program
                         );
                     }
                 }
@@ -81,9 +80,9 @@
                                 <table class="table table-responsive" id="myTable">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
-                                            <th>Username</th>
-                                            <th>Password</th>
+                                            <th>No</th>
+                                            <th>Program</th>
+                                            <th>Kegiatan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -93,9 +92,9 @@
                                             {
                                                 foreach($return_arr as $arr){
                                                     echo "<tr>";
-                                                    echo "<td>".$arr["id"]."</td>";
-                                                    echo "<td>".$arr["username"]."</td>";
-                                                    echo "<td>".$arr["pwd"]."</td>";
+                                                    echo "<td>".++$count."</td>";
+                                                    echo "<td>".$arr["program"]."</td>";
+                                                    echo "<td>".$arr["kegiatan"]."</td>";
                                                     echo "<td>
                                                             <a href='edit_kegiatan.php?kegiatan_id=".$arr["id"]."' class='btn btn-success'>Edit</a>
                                                             <a href='indikator.php?kegiatan_id=".$arr["id"]."&nama=".$arr["username"]."' class='btn btn-primary'>Output</a>
