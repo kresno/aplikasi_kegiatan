@@ -90,6 +90,7 @@
                                             <th>No</th>
                                             <th>Tolak Ukur</th>
                                             <th>Satuan</th>
+                                            <th>Jenis Indikator</th>
                                             <th>Usulan ASB</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -103,6 +104,7 @@
                                                     echo "<td>".++$count."</td>";
                                                     echo "<td>".$arr["tolak_ukur"]."</td>";
                                                     echo "<td>".$arr["satuan"]."</td>";
+                                                    echo "<td>".$arr["jenis"]."</td>";
                                                     echo "<td>".$arr["usulan_asb"]."</td>";
                                                     echo "<td>
                                                             <a href='edit_ik.php?ik_id=".$arr["id"]."' class='btn btn-success'>Edit</a>
