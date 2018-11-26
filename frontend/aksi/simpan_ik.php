@@ -13,7 +13,7 @@ $sql = "INSERT INTO indikator_kegiatan (kegiatan_id, indikator_hasil_id, tolak_u
 if (!mysqli_query($con,$sql)) {
     die('Error: ' . mysqli_error($con));
 }else{
-    echo "<script>alert('Data Berhasil di Simpan'); window.location.href='../indikator.php';</script>";
+    echo "<script>alert('Data Berhasil di Simpan'); window.location.href='../indikator.php?kegiatan_id=$kegiatan_id';</script>";
 }
 
 ?>

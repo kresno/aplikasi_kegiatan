@@ -69,7 +69,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
-                            <h3 class="box-title">Data Indikator <?php echo $kegiatan_nama;?></h3>
+                            <h3 class="box-title">Data Indikator</h3>
                         </div>
                     </div>
                 </div>
