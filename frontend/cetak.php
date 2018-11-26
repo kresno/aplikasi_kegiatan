@@ -39,7 +39,7 @@
         <?php 
             include 'config/koneksi.php';
             $opd_id = $_SESSION['opd_id'];
-            $sql = "SELECT c.nama as program, a.nama as kegiatan, g.nama as indikator, d.tolak_ukur as tolak_ukur, f.satuan as satuan, d.asb as asb
+            $sql = "SELECT c.nama as program, a.nama as kegiatan, g.nama as indikator, d.tolak_ukur as tolak_ukur, f.nama as satuan, d.asb as asb
                     FROM kegiatan a 
                     join opd_kegiatan b on a.id=b.kegiatan_id 
                     join program c on c.id=a.program_id
