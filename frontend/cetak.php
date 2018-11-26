@@ -112,8 +112,7 @@
                                                     echo "<td>".$arr["asb"]."</td>";
                                                     echo "</tr>";
                                                 }
-                                            } 
-                                            
+                                            }                       
                                         ?>
                                     </tbody>
                                 </table>
