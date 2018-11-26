@@ -39,7 +39,7 @@
         <?php 
             include 'config/koneksi.php';
             $opd_id = $_SESSION['opd_id'];
-            $sql = "SELECT c.nama as program, a.nama as kegiatan, g.nama as indikator, d.tolak_ukur as tolak_ukur, f.nama as satuan, d.asb as asb
+            $sql = "SELECT e.nama as jenis, a.nama as kegiatan, g.nama as indikator, d.tolak_ukur as tolak_ukur, f.nama as satuan, d.asb as asb
                     FROM kegiatan a 
                     join opd_kegiatan b on a.id=b.kegiatan_id 
                     join program c on c.id=a.program_id
@@ -54,14 +54,14 @@
                 if(mysqli_num_rows($result) > 0){
                     while($row= mysqli_fetch_array($result)){
                         $kegiatan = $row['kegiatan'];
-                        $program = $row['program'];
+                        $jenis = $row['jenis'];
                         $tolak_ukur = $row['tolak_ukur'];
                         $satuan = $row['satuan'];
                         $asb = $row['asb'];
                         $indikator = $row['indikator'];
                         $return_arr[] = array(
                             "kegiatan" => $kegiatan,
-                            "program" => $program,
+                            "jenis" => $jenis,
                             "asb" => $asb,
                             "indikator" => $indikator,
                             "tolak_ukur" => $tolak_ukur,
@@ -89,9 +89,9 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Program</th>
                                             <th>Kegiatan</th>
                                             <th>Indikator Sasaran</th>
+                                            <th>Jenis Indikator</th>
                                             <th>Tolak Ukur</th>
                                             <th>Satuan</th>
                                             <th>Usulan ASB</th>
@@ -104,9 +104,9 @@
                                                 foreach($return_arr as $arr){
                                                     echo "<tr>";
                                                     echo "<td>".++$count."</td>";
-                                                    echo "<td>".$arr["program"]."</td>";
                                                     echo "<td>".$arr["kegiatan"]."</td>";
                                                     echo "<td>".$arr["indikator"]."</td>";
+                                                    echo "<td>".$arr["jenis"]."</td>";
                                                     echo "<td>".$arr["tolak_ukur"]."</td>";
                                                     echo "<td>".$arr["satuan"]."</td>";
                                                     echo "<td>".$arr["asb"]."</td>";
@@ -125,6 +125,8 @@
             </div>
             <?php include 'config/footer.php'; ?>
 
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
     <script>
     $(document).ready( function () {
         $('#myTable').DataTable({
