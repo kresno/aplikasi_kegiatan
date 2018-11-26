@@ -5,7 +5,7 @@ $servername = "localhost";
 // $dbname = "ruangaci_pj";
 
 $username = "simencrang2018_kegiatan";
-$password = "pass8080sword";
+$password = "pass8080word";
 $dbname = "simencrang2018_kegiatan";
 
 
