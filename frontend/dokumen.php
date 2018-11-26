@@ -38,8 +38,8 @@
 
         <?php 
             include 'config/koneksi.php';
-
-            $sql = "SELECT a.id as id, a.nama as dokumen, c.nama as kegiatan, a.file as file FROM dokumen a JOIN opd_kegiatan b on b.kegiatan_id=a.kegiatan_id join kegiatan c on c.id=a.kegiatan_id where b.opd_id=$_SESSION['opd_id']";
+            $opd_id = $_SESSION['opd_id'];
+            $sql = "SELECT a.id as id, a.nama as dokumen, c.nama as kegiatan, a.file as file FROM dokumen a JOIN opd_kegiatan b on b.kegiatan_id=a.kegiatan_id join kegiatan c on c.id=a.kegiatan_id where b.opd_id=$opd_id";
             $count =0;
             if($result = mysqli_query($con, $sql)){
                 if(mysqli_num_rows($result) > 0){
