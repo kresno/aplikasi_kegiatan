@@ -8,7 +8,7 @@ $keterangan = $_POST['keterangan'];
 $ekstensi = array('xlsx', 'pdf', 'xls', 'doc', 'docx');
 
 $nama = $_FILES["file"]["name"];
-$ukuran = $_FILES["file"]["size"];
+$ukuran = $_FILES["file"]["temp_size"];
 $file_tmp = $_FILES["file"]["temp_name"];
 
 
