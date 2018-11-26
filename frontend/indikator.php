@@ -79,7 +79,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="pull-right">
-                                        <a href="create_indikator.php<?php echo $kegiatan_id; ?>" class="btn btn-primary">Tambah Indikator Kegiatan</a>
+                                        <a href="create_indikator.php?kegiatan_id<?php echo $kegiatan_id; ?>" class="btn btn-primary">Tambah Indikator Kegiatan</a>
                                     </div>
                                 </div>
                             </div>
