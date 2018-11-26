@@ -99,7 +99,7 @@
                                                     echo "<td>".++$count."</td>";
                                                     echo "<td>".$arr["kegiatan"]."</td>";
                                                     echo "<td>".$arr["dokumen"]."</td>";
-                                                    echo "<td>".$arr["file"]."</td>";
+                                                    echo "<td><a href='".$arr["file"]."' class='btn btn-primary' download>Download File</a></td>";
                                                     echo "<td>
                                                             <a href='edit_dokumen.php?dok_id=".$arr["id"]."' class='btn btn-success'>Edit</a>
                                                             <a href='hapus_dokumen.php?dok_id=".$arr["id"]."' class='btn btn-warning'>Hapus</a>
