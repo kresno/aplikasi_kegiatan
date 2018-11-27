@@ -107,7 +107,6 @@
                                                     echo "<td>".$arr["jenis"]."</td>";
                                                     echo "<td>".$arr["usulan_asb"]."</td>";
                                                     echo "<td>
-                                                            <a href='edit_ik.php?ik_id=".$arr["id"]."' class='btn btn-success'>Edit</a>
                                                             <a href='hapus_ik.php?ik_id=".$arr["id"]."' class='btn btn-warning'>Hapus</a>
                                                           </td>";
                                                     echo "</tr>";

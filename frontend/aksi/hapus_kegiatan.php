@@ -3,16 +3,12 @@ include '../config/koneksi.php';
 
 $kegiatan_id = $_GET['kegiatan_id'];
 
-$sql = "START TRANSACTION;
-        DELETE FROM kegiatan WHERE id=$kegiatan_id;
-        DELETE FROM indikator_kegiatan WHERE kegiatan_id=$kegiatan_id;
-        DELETE FROM opd_kegiatan WHERE kegiatan_id=$kegiatan_id;
-        COMMIT;";
+$sql = "DELETE FROM kegiatan where id=$kegiatan_id; DELETE FROM indikator_kegiatan where kegiatan_id=$kegiatan_id; DELETE FROM opd_kegiatan where kegiatan_id=$kegiatan_id;";
 
-if (!mysqli_query($con,$sql)) {
+if (!mysqli_multi_query($con,$sql)) {
     die('Error: ' . mysqli_error($con));
 }else{
-    echo "<script>alert('Data Berhasil di Simpan'); window.location.href='../kegiatan.php';</script>";
+    echo "<script>alert('Data Berhasil di Hapus'); window.location.href='../kegiatan.php';</script>";
 }
 
 ?>
