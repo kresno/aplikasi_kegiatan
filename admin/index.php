@@ -54,7 +54,7 @@
                                 <li>
                                     <div id="sparklinedash"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success"><?php if($jumlah_program>0) {echo $jumlah_program;} else { echo "0";} ?></span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">10</span></li>
                             </ul>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                                 <li>
                                     <div id="sparklinedash2"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple"><?php if($jumlah_kegiatan>0) {echo $jumlah_kegiatan;} else { echo "0";} ?></span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">5</span></li>
                             </ul>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                                 <li>
                                     <div id="sparklinedash3"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info"><?php if($jumlah_indikator>0) {echo $jumlah_indikator;} else { echo "0";} ?></span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">5</span></li>
                             </ul>
                         </div>
                     </div>
