@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    include '../config/head.php';
+    include '../frontend/config/head.php';
 ?>
 
 <body class="fix-header">
@@ -19,13 +19,13 @@
     <div id="wrapper">
         <!-- ============================================================== -->
         <?php
-        include '../config/navbar.php';
+        include '../frontend/config/navbar.php';
         ?>
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->    
         <?php 
-            include '../config/sidebar.php';
+            include '../frontend/config/sidebar.php';
         ?>
         <!-- ============================================================== -->
         <!-- End Left Sidebar -->
@@ -98,7 +98,7 @@
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
-            <?php include '../config/footer.php';?>
+            <?php include '../frontend/config/footer.php';?>
 </body>
 
 </html>
