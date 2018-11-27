@@ -1,9 +1,9 @@
 <?php 
 include '../config/koneksi.php';
 
-$ik_id = $_GET['ik_id'];
+$dok_id = $_GET['dok_id'];
 
-$sql = "DELETE FROM dokumen WHERE id=$ik_id";
+$sql = "DELETE FROM dokumen WHERE id=$dok_id";
 
 if (!mysqli_query($con,$sql)) {
     die('Error: ' . mysqli_error($con));
