@@ -46,6 +46,32 @@
                 <!-- Different data widgets -->
                 <!-- ============================================================== -->
                 <!-- .row -->
+                <?php 
+                include 'config/koneksi.php';
+                $opd_id = $_SESSION['opd_id'];
+                $sql = "select sum(counting) as jumlah_program from (select COUNT(DISTINCT(kegiatan.program_id)) as counting from kegiatan join opd_kegiatan on opd_kegiatan.kegiatan_id=kegiatan.id where opd_kegiatan.opd_id=$opd_id GROUP by kegiatan.program_id) as jumlah_program";
+                
+                $result = mysqli_query($con, $sql);
+                if(mysqli_num_rows($result) > 0){
+                    $row= mysqli_fetch_assoc($result);
+                    $jumlah_program=$row['jumlah_program'];
+                }
+
+                $sql = "select count(kegiatan.id) as jumlah_kegiatan from kegiatan join opd_kegiatan on kegiatan.id=opd_kegiatan.kegiatan_id where opd_kegiatan.opd_id=$opd_id";
+                $result = mysqli_query($con, $sql);
+                if(mysqli_num_rows($result) > 0){
+                    $row= mysqli_fetch_assoc($result);
+                    $jumlah_kegiatan=$row['jumlah_kegiatan'];
+                }
+                
+                $sql = "select count(indikator_kegiatan.id) as jumlah_indikator from kegiatan join opd_kegiatan on kegiatan.id=opd_kegiatan.kegiatan_id join indikator_kegiatan on kegiatan.id=indikator_kegiatan.kegiatan_id where opd_kegiatan.opd_id=$opd_id";
+                $result = mysqli_query($con, $sql);
+                if(mysqli_num_rows($result) > 0){
+                    $row= mysqli_fetch_assoc($result);
+                    $jumlah_indikator=$row['jumlah_indikator'];
+                }
+                ?>
+
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
@@ -54,7 +80,7 @@
                                 <li>
                                     <div id="sparklinedash"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">1</span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success"><?php if($jumlah_program>0) {echo $jumlah_program;} else { echo "0";} ?></span></li>
                             </ul>
                         </div>
                     </div>
@@ -65,7 +91,7 @@
                                 <li>
                                     <div id="sparklinedash2"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">2</span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple"><?php if($jumlah_kegiatan>0) {echo $jumlah_kegiatan;} else { echo "0";} ?></span></li>
                             </ul>
                         </div>
                     </div>
@@ -76,7 +102,7 @@
                                 <li>
                                     <div id="sparklinedash3"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">3</span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info"><?php if($jumlah_indikator>0) {echo $jumlah_indikator;} else { echo "0";} ?></span></li>
                             </ul>
                         </div>
                     </div>
