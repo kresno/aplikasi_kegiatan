@@ -101,7 +101,7 @@
                                                     echo "<td>".$arr["dokumen"]."</td>";
                                                     echo "<td><a href='".$arr["file"]."' class='btn btn-primary' download>Download File</a></td>";
                                                     echo "<td>
-                                                            <a href='hapus_dokumen.php?dok_id=".$arr["id"]."' class='btn btn-warning'>Hapus</a>
+                                                            <a href='aksi/hapus_dokumen.php?dok_id=".$arr["id"]."' class='btn btn-warning'>Hapus</a>
                                                           </td>";
                                                     echo "</tr>";
                                                 }
