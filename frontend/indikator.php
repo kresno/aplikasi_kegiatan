@@ -105,7 +105,7 @@
                                                     echo "<td>".$arr["tolak_ukur"]."</td>";
                                                     echo "<td>".$arr["satuan"]."</td>";
                                                     echo "<td>".$arr["jenis"]."</td>";
-                                                    echo "<td>".$arr["usulan_asb"]."</td>";
+                                                    echo "<td>".number_format($arr["usulan_asb"])."</td>";
                                                     echo "<td>
                                                             <a href='aksi/hapus_ik.php?ik_id=".$arr["id"]."&kegiatan_id=".$kegiatan_id."' class='btn btn-warning'>Hapus</a>
                                                           </td>";
