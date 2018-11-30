@@ -109,7 +109,7 @@
                                                     echo "<td>".$arr["jenis"]."</td>";
                                                     echo "<td>".$arr["tolak_ukur"]."</td>";
                                                     echo "<td>".$arr["satuan"]."</td>";
-                                                    echo "<td>".$arr["asb"]."</td>";
+                                                    echo "<td>".number_format($arr["asb"])."</td>";
                                                     echo "</tr>";
                                                 }
                                             }                       
